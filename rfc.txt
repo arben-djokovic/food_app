@@ -1,0 +1,21 @@
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet, Text,StatusBar, View, Image, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { Platform } from 'react-native';
+import { AntDesign, Ionicons,MaterialCommunityIcons } from '@expo/vector-icons'; 
+
+export default function HomeScreen() {
+
+  return (<SafeAreaView style={styles.androidSafe}>
+      <Text>Home Screen</Text>
+  </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+    androidSafe: {
+    width: 100+'%',
+    minHeight: Dimensions.get('window').height,
+    backgroundColor: '#fff',
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+});
