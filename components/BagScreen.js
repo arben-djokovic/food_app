@@ -31,7 +31,7 @@ export default function BagScreen({ navigation }) {
   useEffect(() => {
     getCijena()
   }, [card])
-  let [modalVisible, setModalVisible] = useState(true)
+  let [modalVisible, setModalVisible] = useState(false)
 
   return (<SafeAreaView style={styles.androidSafe}>
     <Modal
@@ -49,21 +49,23 @@ export default function BagScreen({ navigation }) {
         </View>
           <ScrollView >
             <View style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: Dimensions.get('window').height -73 }}>
-            <View style={{borderWidth: 1, paddingTop: 20, paddingBottom: 10, paddingHorizontal: 20, margin: 10, marginTop: 0}}>
-              <Text style={{marginBottom: 10, fontSize: 18}}>Youre name: <Text style={{fontWeight: 'bold', fontSize: 20}}>{MyStore.name}</Text></Text>
-              <Text style={{marginBottom: 10, fontSize: 18}}>Youre phone number: <Text style={{fontWeight: 'bold', fontSize: 20}}>{MyStore.number}</Text></Text>
-            </View>
-            <Text style={{ marginHorizontal: 10, color: 'blue' }} onPress={() => { navigation.navigate('Profile') }}>Change you're informations?</Text>
-            <TouchableOpacity style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 40}}>
-              <Text style={{backgroundColor: '#302F2F', color: 'white', paddingVertical: 10, paddingHorizontal: 20, fontSize: 20}}>Order !</Text>
-            </TouchableOpacity>
+              <View style={{borderWidth: 1, paddingTop: 20, width: 90+'%', paddingBottom: 10, paddingHorizontal: 20, margin: 10, marginTop: 0}}>
+                <Text style={{marginBottom: 10, fontSize: 18}}>Youre name: <Text style={{fontWeight: 'bold', fontSize: 20}}>{MyStore.name}</Text></Text>
+                <Text style={{marginBottom: 10, fontSize: 18}}>Youre phone number: <Text style={{fontWeight: 'bold', fontSize: 20}}>{MyStore.number}</Text></Text>
+              </View>
+              <TouchableOpacity>
+                <Text style={{ marginHorizontal: 5+'%', color: 'blue', alignSelf: 'flex-start' }} onPress={() => { navigation.navigate('Profile') }}>Change you're informations?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 40}}>
+                <Text style={{backgroundColor: '#302F2F', color: 'white', paddingVertical: 10, paddingHorizontal: 20, fontSize: 20}}>Order !</Text>
+              </TouchableOpacity>
             </View>
           </ScrollView>
       </View>
     </Modal>
 
-    <View style={{ padding: 5, borderBottomWidth: 1, borderColor: 'darkgray' }}>
-      <Text style={{ textAlign: 'center', fontSize: 18 }} >Bag</Text>
+    <View style={{...styles.header, justifyContent: 'center'}}>
+      <Text style={styles.headerText}>Bag</Text>
     </View>
 
     <View style={styles.podHeader}>
@@ -166,6 +168,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   headerText: {
-    fontSize: 18
+    fontSize: 18,
   },
 });
