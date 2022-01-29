@@ -37,8 +37,8 @@ export default function ItemScreen({navigation}) {
       </ScrollView>
       <View style={styles.footer}>
           <Text style={{fontSize: 15}}>This item in bag: <Text style={{fontSize: 17, fontWeight: 'bold'}}>{thisItem}</Text></Text>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20}}>
-              <View style={{flexDirection: 'row', width: 100, justifyContent: 'space-around', alignItems: 'center', borderWidth: 1, padding: 10, borderRadius: 10, marginTop: 10}}>
+          <View style={styles.footerDown}>
+              <View style={styles.footerDownFirst}>
                   <TouchableOpacity onPress={()=>{
                           if(kolicina != 1){
                               setKolocina(kolicina => kolicina-1)
@@ -61,8 +61,8 @@ export default function ItemScreen({navigation}) {
                   dispatch(cardAddAction({id: itemId,kolicina: kolicina}))
                   setKolocina(1)
                   setPrice( Number(Data[itemId].price))
-              }} style={{width: 180,backgroundColor: 'black', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 1, padding: 10, borderRadius: 10, marginTop: 10}}>
-                  <Text style={{color: 'white'}}>Add to Bag <Text style={{fontWeight: 'bold', fontSize: 17}}> { Number(price).toFixed(2)}$</Text></Text>
+              }} style={styles.addToBagBtn}>
+                  <Text style={{color: 'white'}}>Add to Bag <Text style={styles.addToBagBtnSecond}> { Number(price).toFixed(2)}$</Text></Text>
                 </TouchableOpacity>
           </View>
       </View>
@@ -123,5 +123,35 @@ const styles = StyleSheet.create({
       padding: 0,
       fontWeight: 'bold',
       fontSize: 20,
+  },
+  footerDown: {
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    paddingHorizontal: 20
+  },
+  footerDownFirst: {
+    flexDirection: 'row', 
+    width: 100, 
+    justifyContent: 'space-around', 
+    alignItems: 'center', 
+    borderWidth: 1, 
+    padding: 10, 
+    borderRadius: 10,
+    marginTop: 10
+  },
+  addToBagBtn: {
+    width: 180,
+    backgroundColor: 'black', 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    borderWidth: 1, 
+    padding: 10, 
+    borderRadius: 10, 
+    marginTop: 10
+  },
+  addToBagBtnSecond: {
+    fontWeight: 'bold', 
+    fontSize: 17
   }
 });

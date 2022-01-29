@@ -78,7 +78,7 @@ export default function HomeScreen({ navigation }) {
             <Image style={styles.slika} source={pizza.img} />
             <View style={{ marginTop: 5 }}>
               <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+              <View style={styles.priceDiv}>
                 <Text style={styles.price}>{pizza.price + ' $'}</Text>
                 <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
               </View>
@@ -95,7 +95,7 @@ export default function HomeScreen({ navigation }) {
             <Image style={styles.slika} source={pizza.img} />
             <View style={{ marginTop: 5 }}>
               <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+              <View style={styles.priceDiv}>
                 <Text style={styles.price}>{pizza.price + ' $'}</Text>
                 <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
               </View>
@@ -112,7 +112,7 @@ export default function HomeScreen({ navigation }) {
             <Image style={styles.slika} source={pizza.img} />
             <View style={{ marginTop: 5 }}>
               <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+              <View style={styles.priceDiv}>
                 <Text style={styles.price}>{pizza.price + ' $'}</Text>
                 <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
               </View>
@@ -129,7 +129,7 @@ export default function HomeScreen({ navigation }) {
             <Image style={styles.slika} source={pizza.img} />
             <View style={{ marginTop: 5 }}>
               <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+              <View style={styles.priceDiv}>
                 <Text style={styles.price}>{pizza.price + ' $'}</Text>
                 <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
               </View>
@@ -146,7 +146,7 @@ export default function HomeScreen({ navigation }) {
             <Image style={styles.slika} source={pizza.img} />
             <View style={{ marginTop: 5 }}>
               <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+              <View style={styles.priceDiv}>
                 <Text style={styles.price}>{pizza.price + ' $'}</Text>
                 <Text>{pizza.grama + ' g'}</Text>
               </View>
@@ -247,5 +247,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#f7f7f7',
     marginRight: 20
+  },
+  priceDiv: {
+    flexDirection: 'row', 
+    marginTop: 10
   }
 });

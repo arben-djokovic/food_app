@@ -48,16 +48,17 @@ export default function BagScreen({ navigation }) {
           <Text style={{ width: 25 }}></Text>
         </View>
           <ScrollView >
-            <View style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: Dimensions.get('window').height -73 }}>
-              <View style={{borderWidth: 1, paddingTop: 20, width: 90+'%', paddingBottom: 10, paddingHorizontal: 20, margin: 10, marginTop: 0}}>
-                <Text style={{marginBottom: 10, fontSize: 18}}>Youre name: <Text style={{fontWeight: 'bold', fontSize: 20}}>{MyStore.name}</Text></Text>
-                <Text style={{marginBottom: 10, fontSize: 18}}>Youre phone number: <Text style={{fontWeight: 'bold', fontSize: 20}}>{MyStore.number}</Text></Text>
+            <View style={styles.infosDiv}>
+              <View style={styles.infosDivFirst}>
+                <Text style={styles.info}>Youre name: <Text style={styles.infoSecond}>{MyStore.name}</Text></Text>
+                <Text style={styles.info}>Youre phone number: <Text style={styles.infoSecond}>{MyStore.number}</Text></Text>
+                <Text style={styles.info}>Youre phone number: <Text style={styles.infoSecond}>{ukupnaCijena + ' $'}</Text></Text>
               </View>
               <TouchableOpacity>
-                <Text style={{ marginHorizontal: 5+'%', color: 'blue', alignSelf: 'flex-start' }} onPress={() => { navigation.navigate('Profile') }}>Change you're informations?</Text>
+                <Text style={styles.changeInfos} onPress={() => { navigation.navigate('Profile') }}>Change you're informations?</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 40}}>
-                <Text style={{backgroundColor: '#302F2F', color: 'white', paddingVertical: 10, paddingHorizontal: 20, fontSize: 20}}>Order !</Text>
+              <TouchableOpacity style={styles.orderBtnTouchable}>
+                <Text style={styles.orderBtn}>Order !</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -69,7 +70,7 @@ export default function BagScreen({ navigation }) {
     </View>
 
     <View style={styles.podHeader}>
-      <Text>Ukupna cijena: <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{ukupnaCijena + '$'}</Text></Text>
+      <Text>Ukupna cijena: <Text style={styles.ukupnaCijena}>{ukupnaCijena + '$'}</Text></Text>
       <TouchableOpacity onPress={() => {
         setModalVisible(true)
       }} style={styles.buyBtn}>
@@ -78,7 +79,7 @@ export default function BagScreen({ navigation }) {
       </TouchableOpacity>
     </View>
 
-    <ScrollView style={{ backgroundColor: '#f3f3f3', maxHeight: Dimensions.get('window').height - 151 }}>
+    <ScrollView style={styles.mainSection}>
       {card.length ? card.map(cardItem => {
         return (<TouchableOpacity onPress={() => {
           dispatch(itemAction(cardItem.id))
@@ -86,13 +87,13 @@ export default function BagScreen({ navigation }) {
         }} key={cardItem.id} style={styles.item}>
           <Image style={styles.slika} source={Data[cardItem.id].img} />
           <View style={{ marginTop: 5 }}>
-            <Text style={styles.naslovItem}>{Data[cardItem.id].naslov}<Text style={{ fontSize: 13, fontWeight: 'normal' }}> - {Data[cardItem.id].price}$</Text></Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', width: 60 }}>
+            <Text style={styles.naslovItem}>{Data[cardItem.id].naslov}<Text style={styles.naslovPrice}> - {Data[cardItem.id].price}$</Text></Text>
+            <View style={styles.itemKolicinaDiv}>
+              <View style={styles.itemKolicinaFirst}>
                 <TouchableOpacity onPress={() => {
                   dispatch(cardRemoveAction({ id: cardItem.id, kolicina: 1 }))
                 }}><Ionicons name="ios-remove-outline" size={24} color="black" /></TouchableOpacity>
-                <Text style={{ fontSize: 19, marginHorizontal: 10 }}>{cardItem.kolicina}</Text>
+                <Text style={styles.kolicina}>{cardItem.kolicina}</Text>
                 <TouchableOpacity onPress={() => {
                   dispatch(cardAddAction({ id: cardItem.id, kolicina: 1 }))
                 }}><Ionicons name="add-outline" size={24} color="black" /></TouchableOpacity>
@@ -101,9 +102,11 @@ export default function BagScreen({ navigation }) {
             </View>
           </View>
         </TouchableOpacity>)
-      }) : <View style={{ height: Dimensions.get('window').height - 150, justifyContent: 'center', alignItems: 'center' }}><Text>No items in Bag</Text></View>}
+      }) : <View style={styles.noItems}><Text>No items in Bag</Text></View>}
     </ScrollView>
+
     <Footer navigation={navigation} homeS={false} bagS={true} profileS={false} />
+    
   </SafeAreaView>
   );
 }
@@ -170,4 +173,77 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 18,
   },
+  mainSection:{
+    backgroundColor: '#f3f3f3', 
+    maxHeight: Dimensions.get('window').height - 151 
+  },
+  infosDiv: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: Dimensions.get('window').height -73 
+  },
+  infosDivFirst: {
+    borderWidth: 1, 
+    paddingTop: 20, 
+    width: 90+'%', 
+    paddingBottom: 10, 
+    paddingHorizontal: 20, 
+    margin: 10, 
+    marginTop: 0
+  },
+  info: {
+    marginBottom: 10,
+    fontSize: 18
+  },
+  infoSecond: {
+    fontWeight: 'bold', 
+    fontSize: 20
+  },
+  changeInfos: {
+    marginHorizontal: 5+'%', 
+    color: 'blue', 
+    alignSelf: 'flex-start' 
+  },
+  orderBtn: {
+    backgroundColor: '#302F2F', 
+    color: 'white', 
+    paddingVertical: 10, 
+    paddingHorizontal: 20, 
+    fontSize: 20
+  },
+  orderBtnTouchable: {
+    flexDirection: 'row', 
+    marginLeft: 'auto', 
+    marginRight: 'auto', 
+    marginTop: 40
+  },
+  ukupnaCijena: {
+    fontWeight: 'bold', 
+    fontSize: 18
+  },
+  naslovPrice: {
+    fontSize: 13, 
+    fontWeight: 'normal'
+  },
+  itemKolicinaDiv: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    marginTop: 10
+  },
+  itemKolicinaFirst: {
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    alignItems: 'center', 
+    width: 60 
+  },
+  kolicina: {
+    fontSize: 19, 
+    marginHorizontal: 10 
+  },
+  noItems: {
+    height: Dimensions.get('window').height - 150, 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  }
 });

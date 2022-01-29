@@ -120,7 +120,7 @@ export default function BagScreen({navigation}) {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.order}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={styles.orderFirst}>
           <Entypo name="location-pin" size={25} color="black" />
           <Text style={styles.orderText}>My adress</Text>
         </View>
@@ -128,7 +128,7 @@ export default function BagScreen({navigation}) {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.order}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={styles.orderFirst}>
           <MaterialIcons name="feedback" size={25} color="black" />
           <Text style={styles.orderText}>Give feedback</Text>
         </View>
@@ -136,7 +136,7 @@ export default function BagScreen({navigation}) {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.order}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={styles.orderFirst}>
           <Ionicons name="information-circle-outline" size={24} color="black" />
           <Text style={styles.orderText}>Informations</Text>
         </View>
@@ -238,5 +238,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     fontSize: 16,
     marginBottom: 20
+  },
+  orderFirst: {
+    flexDirection: 'row', 
+    alignItems: 'center'
   }
 });
