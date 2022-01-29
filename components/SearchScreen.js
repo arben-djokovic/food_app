@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet,TextInput, Text,StatusBar, View, Image, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { SafeAreaView, StyleSheet,TextInput,StatusBar, View, ScrollView, Dimensions } from 'react-native';
 import { Platform } from 'react-native';
-import { AntDesign, Ionicons,MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
 import Data from './Store'
 import { useDispatch } from 'react-redux';
-import { itemAction } from './../redux/Actions';
 import Item from './Item';
 
 export default function SearchScreen({navigation}) {
