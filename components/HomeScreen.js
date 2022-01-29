@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Data from './Store'
 import { useDispatch } from 'react-redux';
 import { itemAction } from './../redux/Actions';
+import Item from './Item';
 
 export default function HomeScreen({ navigation }) {
 
@@ -71,87 +72,27 @@ export default function HomeScreen({ navigation }) {
 
         {pizza ? Data.map(pizza => {
           if(pizza.kategorija === 'pizza'){
-          return (<TouchableOpacity onPress={()=>{
-            dispatch(itemAction(pizza.id))    
-            navigation.navigate('Item')
-          }} key={pizza.id} style={styles.item}>
-            <Image style={styles.slika} source={pizza.img} />
-            <View style={{ marginTop: 5 }}>
-              <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={styles.priceDiv}>
-                <Text style={styles.price}>{pizza.price + ' $'}</Text>
-                <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>)}
+          return (<Item key={pizza.id} navigation={navigation} pizza={pizza} />)}
         }) : <></>}
 
         {hamburger ? Data.map(pizza => {
           if(pizza.kategorija === 'hamburger'){
-          return (<TouchableOpacity onPress={()=>{
-            dispatch(itemAction(pizza.id))    
-            navigation.navigate('Item')
-          }} key={pizza.id} style={styles.item}>
-            <Image style={styles.slika} source={pizza.img} />
-            <View style={{ marginTop: 5 }}>
-              <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={styles.priceDiv}>
-                <Text style={styles.price}>{pizza.price + ' $'}</Text>
-                <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>)}
+          return (<Item key={pizza.id} navigation={navigation} pizza={pizza} />)}
         }) : <></>}
 
         {grill ? Data.map(pizza => {
           if(pizza.kategorija === 'rostilj'){
-          return (<TouchableOpacity onPress={()=>{
-            dispatch(itemAction(pizza.id))    
-            navigation.navigate('Item')
-          }} key={pizza.id} style={styles.item}>
-            <Image style={styles.slika} source={pizza.img} />
-            <View style={{ marginTop: 5 }}>
-              <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={styles.priceDiv}>
-                <Text style={styles.price}>{pizza.price + ' $'}</Text>
-                <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>)}
+          return (<Item key={pizza.id}  navigation={navigation} pizza={pizza} />)}
         }) : <></>}
 
         {soup ? Data.map(pizza => {
           if(pizza.kategorija === 'supe'){
-          return (<TouchableOpacity onPress={()=>{
-            dispatch(itemAction(pizza.id))    
-            navigation.navigate('Item')
-          }} key={pizza.id} style={styles.item}>
-            <Image style={styles.slika} source={pizza.img} />
-            <View style={{ marginTop: 5 }}>
-              <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={styles.priceDiv}>
-                <Text style={styles.price}>{pizza.price + ' $'}</Text>
-                <Text style={styles.gram}>{pizza.grama + ' g'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>)}
+          return (<Item key={pizza.id}  navigation={navigation} pizza={pizza} />)}
         }) : <></>}
 
         {sendwich ? Data.map(pizza => {
           if(pizza.kategorija === 'sendvici'){
-          return (<TouchableOpacity onPress={()=>{
-            dispatch(itemAction(pizza.id))    
-            navigation.navigate('Item')
-          }} key={pizza.id} style={styles.item}>
-            <Image style={styles.slika} source={pizza.img} />
-            <View style={{ marginTop: 5 }}>
-              <Text style={styles.naslovItem}>{pizza.naslov}</Text>
-              <View style={styles.priceDiv}>
-                <Text style={styles.price}>{pizza.price + ' $'}</Text>
-                <Text>{pizza.grama + ' g'}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>)}
+          return (<Item key={pizza.id}  navigation={navigation} pizza={pizza} />)}
         }) : <></>}
       
       </View>

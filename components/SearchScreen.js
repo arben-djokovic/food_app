@@ -5,6 +5,7 @@ import { AntDesign, Ionicons,MaterialCommunityIcons } from '@expo/vector-icons';
 import Data from './Store'
 import { useDispatch } from 'react-redux';
 import { itemAction } from './../redux/Actions';
+import Item from './Item';
 
 export default function SearchScreen({navigation}) {
 
@@ -20,19 +21,7 @@ export default function SearchScreen({navigation}) {
       <View style={{ paddingVertical: 10 }}>
           {Data.map(item => {
               if(item.naslov.toLowerCase().includes(inputText.toLowerCase())){
-                  return(<TouchableOpacity onPress={()=>{
-                    dispatch(itemAction(item.id))    
-                    navigation.navigate('Item')
-                  }} key={item.id} style={styles.item}>
-                    <Image style={styles.slika} source={item.img} />
-                    <View style={{ marginTop: 5 }}>
-                      <Text style={styles.naslovItem}>{item.naslov}</Text>
-                      <View style={styles.priceDiv}>
-                        <Text style={styles.price}>{item.price + ' $'}</Text>
-                        <Text>{item.grama + ' g'}</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>)
+                  return(<Item key={item.id} navigation={navigation} pizza={item} />)
               }
           })}
           </View>
