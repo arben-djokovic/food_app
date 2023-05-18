@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { SafeAreaView, StyleSheet, ToastAndroid, AlertIOS,  TouchableOpacity, Text,StatusBar, ScrollView, Dimensions, View, Modal, TextInput } from 'react-native';
+import { SafeAreaView, StyleSheet, ToastAndroid, Alert,  TouchableOpacity, Text,StatusBar, ScrollView, Dimensions, View, Modal, TextInput } from 'react-native';
 import { Platform } from 'react-native';
 import Footer from './Footer';
 import { Ionicons, Feather, Entypo, SimpleLineIcons, MaterialIcons, AntDesign } from '@expo/vector-icons';
@@ -11,7 +11,7 @@ export default function BagScreen({navigation}) {
     if (Platform.OS === 'android') {
       ToastAndroid.show(msg, ToastAndroid.SHORT)
     } else {
-      AlertIOS.alert(msg);
+      Alert.alert(msg);
     }
   }
   let [name, setName] = useState('')

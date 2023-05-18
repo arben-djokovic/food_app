@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, StatusBar, View, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, StatusBar, View, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { Platform } from 'react-native';
-import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import Footer from './Footer';
 import Data from './Store'
-import { useDispatch } from 'react-redux';
-import { itemAction } from './../redux/Actions';
 import Item from './Item';
 
 export default function HomeScreen({ navigation }) {
@@ -15,8 +13,6 @@ export default function HomeScreen({ navigation }) {
   var [sendwich, setSendwitch] = useState(false)
   var [soup, setSoup] = useState(false)
   var [grill, setGrill] = useState(false)
-
-  var dispatch = useDispatch()
 
 
   return (<SafeAreaView style={styles.androidSafe}>
@@ -67,6 +63,7 @@ export default function HomeScreen({ navigation }) {
         }} style={grill ? { backgroundColor: '#d7f1fc', ...styles.filterItem } : styles.filterItem}><Text>Grill</Text></TouchableOpacity>
       </View>
     </ScrollView>
+   
     <ScrollView style={{ backgroundColor: '#f3f3f3', paddingHorizontal: 10, maxHeight: Dimensions.get('window').height - 175 }}>
       <View style={{ paddingVertical: 10 }}>
 
@@ -97,6 +94,7 @@ export default function HomeScreen({ navigation }) {
       
       </View>
     </ScrollView>
+    
     <Footer navigation={navigation} homeS={true} bagS={false} profileS={false} />
   </SafeAreaView>
   );
